@@ -1,0 +1,153 @@
+<div class="h-full" *ngIf="user">
+  <div class="md:relative -mt-8 md:mt-0 flex gap-4 md:block items-center">
+    <div class="relative group w-[15%] md:w-full min-w-[64px]">
+      <img
+        [src]="user.avatar_url"
+        alt="Avatar"
+        class="rounded-full w-full border border-github-border shadow-sm z-10 relative bg-github-bg"
+      />
+      <div
+        class="hidden md:flex absolute bottom-0 right-0 translate-x-[-15%] translate-y-[-15%] bg-github-bg border border-github-border rounded-full p-2 w-10 h-10 items-center justify-center shadow-sm z-20 group-hover:text-blue-400 cursor-pointer"
+      >
+        <svg
+          class="fill-current text-github-text-secondary w-5 h-5"
+          aria-hidden="true"
+          viewBox="0 0 16 16"
+          version="1.1"
+          width="16"
+          data-view-component="true"
+        >
+          <path
+            d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Zm3.863-2.52c.266-.35 1.15-.557 1.777-.557.734 0 1.58.106 1.86.623.28-.517 1.126-.623 1.86-.623.627 0 1.512.207 1.778.557.19.25.132.618-.09.911-.223.292-.727.608-1.57.94-.37.145-.733.275-1.071.399l.015.004c.48.14.908.3 1.258.497.106.06.21.122.311.186.299.188.599.308.815.195.127-.066.216-.164.248-.303.047-.2.03-.49-.24-.75-.24-.229-.623-.335-1.036-.335-.558 0-1.066.17-1.393.308-.097.04-.15.15-.119.252a.25.25 0 0 0 .324.16c.304-.114.717-.246 1.188-.246.307 0 .564.076.697.203.037.036.059.077.068.118a.33.33 0 0 1-.039.176c-.097.106-.328.036-.615-.123a4.1 4.1 0 0 0-.419-.244A8.7 8.7 0 0 0 9.25 7.47c-1.637.567-2.738 1.487-2.738 2.03 0 .193.136.438.529.625.378.18.917.29 1.564.333.35.023.693.023 1.011 0 .61-.044 1.112-.149 1.468-.328a.25.25 0 0 0 .224.448c-.417.208-1.002.329-1.692.38-1.42.104-2.457-.272-2.922-.885-.453-.596-.516-1.503-.028-2.315.42-.699 1.205-1.126 1.76-1.309.056-.019.108-.035.157-.05l.024-.008a6.3 6.3 0 0 1-1.096-.395c-.843-.332-1.347-.648-1.57-.94-.222-.293-.28-.661-.09-.911Z"
+          ></path>
+        </svg>
+      </div>
+    </div>
+    <div class="md:py-4">
+      <h1 class="text-[26px] font-bold text-github-text-primary leading-tight">{{ user.name }}</h1>
+      <h2 class="text-[20px] font-light text-github-text-secondary leading-tight">
+        {{ user.login }}
+      </h2>
+    </div>
+  </div>
+
+  <div class="mb-4 mt-2 md:mt-0" *ngIf="user.bio">
+    <div class="text-github-text-primary text-[16px]">{{ user.bio }}</div>
+  </div>
+
+  <button
+    class="w-full bg-github-btn-bg hover:bg-github-btn-hover border border-github-btn-border text-github-text-primary py-1.5 rounded-md text-sm font-semibold mb-4 transition-colors"
+  >
+    Edit profile
+  </button>
+
+  <div class="flex items-center gap-4 mb-4 text-sm text-github-text-secondary">
+    <a href="#" class="flex items-center gap-1 hover:text-github-link">
+      <svg
+        class="fill-current text-github-text-secondary"
+        aria-hidden="true"
+        height="16"
+        viewBox="0 0 16 16"
+        version="1.1"
+        width="16"
+        data-view-component="true"
+      >
+        <path
+          d="M2 5.5a3.5 3.5 0 1 1 5.898 2.549 5.508 5.508 0 0 1 3.034 4.084.75.75 0 1 1-1.482.235 4 4 0 0 0-7.9 0 .75.75 0 0 1-1.482-.236A5.507 5.507 0 0 1 3.102 8.05 3.493 3.493 0 0 1 2 5.5ZM11 4a3.001 3.001 0 0 1 2.22 5.018 5.01 5.01 0 0 1 2.56 3.012.749.749 0 0 1-.885.954.752.752 0 0 1-.549-.514 3.507 3.507 0 0 0-2.522-2.372.75.75 0 0 1-.574-.73v-.352a.75.75 0 0 1 .416-.672A1.5 1.5 0 0 0 11 5.5.75.75 0 0 1 11 4Zm-5 4a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"
+        ></path>
+      </svg>
+      <span class="font-bold text-github-text-primary">{{ user.followers }}</span> followers
+    </a>
+    <span>&middot;</span>
+    <a href="#" class="hover:text-github-link">
+      <span class="font-bold text-github-text-primary">{{ user.following }}</span> following
+    </a>
+  </div>
+
+  <div class="flex flex-col gap-1 text-sm text-github-text-primary">
+    <div class="flex items-center gap-2" *ngIf="user.location">
+      <svg
+        class="fill-current text-github-text-secondary w-4 h-4"
+        viewBox="0 0 16 16"
+        version="1.1"
+        width="16"
+        aria-hidden="true"
+      >
+        <path
+          d="m12.596 11.596-3.535 3.536a1.5 1.5 0 0 1-2.122 0l-3.535-3.536a6.5 6.5 0 1 1 9.192-9.193 6.5 6.5 0 0 1 0 9.193Zm-1.06-8.132v-.001a5 5 0 1 0-7.072 7.072L8 14.07l3.536-3.534a5 5 0 0 0 0-7.072ZM8 9a2 2 0 1 1-.001-3.999A2 2 0 0 1 8 9Z"
+        ></path>
+      </svg>
+      {{ user.location }}
+    </div>
+    <div class="flex items-center gap-2" *ngIf="user.blog">
+      <svg
+        class="fill-current text-github-text-secondary w-4 h-4"
+        viewBox="0 0 16 16"
+        version="1.1"
+        width="16"
+        aria-hidden="true"
+      >
+        <path
+          d="m7.775 3.275 1.25-1.25a3.5 3.5 0 1 1 4.95 4.95l-2.5 2.5a3.5 3.5 0 0 1-4.95 0 .751.751 0 0 1 .018-1.042.751.751 0 0 1 1.042-.018 1.998 1.998 0 0 0 2.83 0l2.5-2.5a2.002 2.002 0 0 0-2.83-2.83l-1.25 1.25a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042Zm-4.69 9.64a1.998 1.998 0 0 0 2.83 0l1.25-1.25a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042l-1.25 1.25a3.5 3.5 0 1 1-4.95-4.95l2.5-2.5a3.5 3.5 0 0 1 4.95 0 .751.751 0 0 1-.018 1.042.751.751 0 0 1-1.042.018 1.998 1.998 0 0 0-2.83 0l-2.5 2.5a2.002 2.002 0 0 0 0 2.83Z"
+        ></path>
+      </svg>
+      <a [href]="user.blog" class="hover:text-github-link truncate">{{ user.blog }}</a>
+    </div>
+    <div class="flex items-center gap-2" *ngIf="user.twitter_username">
+      <svg
+        class="fill-current text-github-text-secondary w-4 h-4"
+        viewBox="0 0 16 16"
+        version="1.1"
+        width="16"
+        aria-hidden="true"
+      >
+        <path
+          d="M9.332 8.61h2.55L9.9 11.23l2.936 3.868h-2.54l-2.28-3.002-2.914 3.002H2.55l5.346-6.09-2.658-3.504h2.55l1.644 2.167 2.44-2.167h2.55l-4.94 4.387 2.392 3.153Zm-1.12.98L7.17 8.167 3.398 3.14H5.98l2.67 3.558 1.137 1.517 4.09 5.452h-2.583L8.212 9.59Z"
+        ></path>
+      </svg>
+      <a [href]="'https://twitter.com/' + user.twitter_username" class="hover:text-github-link"
+        >@{{ user.twitter_username }}</a
+      >
+    </div>
+  </div>
+
+  <div class="border-t border-github-border my-4"></div>
+
+  <h2 class="font-semibold text-github-text-primary mb-2">Achievements</h2>
+  <div class="flex gap-2 mb-4">
+    <img
+      src="https://github.githubassets.com/assets/quickdraw-default--light-8f798b35341a.png"
+      class="w-16 h-16 rounded-full border border-github-border"
+      title="Quick Draw"
+    />
+    <img
+      src="https://github.githubassets.com/assets/yolo-default-be0bbff04951.png"
+      class="w-16 h-16 rounded-full border border-github-border"
+      title="YOLO"
+    />
+    <div class="relative">
+      <img
+        src="https://github.githubassets.com/assets/pull-shark-default-498c279a747d.png"
+        class="w-16 h-16 rounded-full border border-github-border"
+        title="Pull Shark"
+      />
+      <span
+        class="absolute -bottom-1 -right-1 bg-yellow-400 text-white text-[10px] px-1 rounded-full border border-white"
+        >x4</span
+      >
+    </div>
+  </div>
+
+  <div class="border-t border-github-border my-4"></div>
+
+  <h2 class="font-semibold text-github-text-primary mb-2">Organizations</h2>
+  <div class="flex gap-2">
+    <a href="#" class="block">
+      <img
+        src="https://avatars.githubusercontent.com/u/108923486?s=64&v=4"
+        alt="@UptimeAI"
+        class="w-9 h-9 rounded-md border border-github-border bg-white"
+      />
+    </a>
+  </div>
+</div>
